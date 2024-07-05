@@ -8,6 +8,9 @@ from herculens.LensImage.lens_image import LensImage
 from herculens.Instrument.noise import Noise
 from herculens.Instrument.psf import PSF
 from herculens.Coordinates.pixel_grid import PixelGrid
+from herculens.MassModel.mass_model import MassModel
+from herculens.LightModel.light_model import LightModel
+
 
 # DEFINE TELESCOPE
 npix = 80 # Number of pixels on a side
@@ -15,13 +18,19 @@ pixel_size = 0.08 # Pixel size in arcseconds
 half_size = npix*pixel_size/2.
 ra_at_xy_0 = dec_at_xy_0 = -half_size +  pixel_size / 2.
 transform_pix2angle = pixel_size * np.eye(2)
-kwargs_pixel = {'nx': npix, 'ny': npix, 'ra_at_xy_0': ra_at_xy_0, 'dec_at_xy_0': dec_at_xy_0, 'transform_pix2angle': transform_pix2angle}
+kwargs_pixel = {'nx': npix, 
+                'ny': npix, 
+                'ra_at_xy_0': ra_at_xy_0, 
+                'dec_at_xy_0': dec_at_xy_0, 
+                'transform_pix2angle': transform_pix2angle}
 pixel_grid = PixelGrid(**kwargs_pixel)
 psf = PSF(psf_type='GAUSSIAN', fwhm=0.3, pixel_size=pixel_size)
 noise = Noise(npix, npix, background_rms=1e-2, exposure_time=1000)
 kwargs_numerics_fit = {'supersampling_factor': 3}
 # DEFINE MODEL FOR IMAGE
-
+lens_mass_model_input = MassModel(['SIE'])
+source_model_input = LightModel(['SERSIC_ELLIPSE'])
+lens_light_model_input = LightModel(['SERSIC_ELLIPSE'])
 lens_image = LensImage(
     pixel_grid,
     psf,
