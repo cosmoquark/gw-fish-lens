@@ -43,6 +43,7 @@ lens_image = LensImage(
 
 def log_likelihood(theta_l, theta_l_true):
     kwargs_lens, kwargs_source, kwargs_lens_light, kwargs_ps = convert_theta_to_model_params(theta_l)
+    kwargs_lens_true, kwargs_source_true, kwargs_lens_light_true, kwargs_ps_true = convert_theta_to_model_params(theta_l_true)
 
     model_params = dict(kwargs_lens = kwargs_lens, 
                         kwargs_source = kwargs_source, 
