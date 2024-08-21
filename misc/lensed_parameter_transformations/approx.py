@@ -3,7 +3,7 @@
 import numpy as np
 
 def incl_plus_approx(incl, PhiL, alphahat, beta=0, theta=0):
-    return np.acos(
+    return np.arccos(
         np.cos(incl)
         - # negative in plus case
         ( np.sin(incl) * np.cos(incl) * np.cos(PhiL) )
@@ -13,7 +13,7 @@ def incl_plus_approx(incl, PhiL, alphahat, beta=0, theta=0):
 
 
 def incl_minus_approx(incl, PhiL, alphahat, beta=0, theta=0):
-    return np.acos(
+    return np.arccos(
         np.cos(incl)
         + # positive in minus case
         ( np.sin(incl) * np.cos(incl) * np.cos(PhiL) )
@@ -22,7 +22,7 @@ def incl_minus_approx(incl, PhiL, alphahat, beta=0, theta=0):
     )
 
 def Phi_coal_plus_approx(Phi_coal, incl, PhiL, alphahat, beta=0, theta=0):
-    return np.acos(
+    return np.arccos(
         np.cos(PhiL)
         + # positive in plus
         ( np.sin(incl)**(-2) * np.sin(Phi_coal)  *np.sin(PhiL) )
@@ -31,7 +31,7 @@ def Phi_coal_plus_approx(Phi_coal, incl, PhiL, alphahat, beta=0, theta=0):
     )
 
 def Phi_coal_minus_approx(Phi_coal, incl, PhiL, alphahat, beta=0, theta=0):
-    return np.acos(
+    return np.arccos(
         np.cos(PhiL)
         - # negative in minus case
         ( np.sin(incl)**(-2) * np.sin(Phi_coal)  *np.sin(PhiL) )
@@ -40,7 +40,7 @@ def Phi_coal_minus_approx(Phi_coal, incl, PhiL, alphahat, beta=0, theta=0):
     )
 
 def polarization_angle_plus_approx(pol_ang, incl, PhiL, alphahat, beta=0, theta=0):
-    return np.acos(
+    return np.arccos(
         np.cos(pol_ang)
         - # negative in plus case
         ( np.tan(incl) * np.sin(PhiL)  *np.sin(pol_ang) )
@@ -49,7 +49,7 @@ def polarization_angle_plus_approx(pol_ang, incl, PhiL, alphahat, beta=0, theta=
     )
 
 def polarization_angle_minus_approx(pol_ang, incl, PhiL, alphahat, beta=0, theta=0):
-    return np.acos(
+    return np.arccos(
         np.cos(pol_ang)
         + # positive in minus case
         ( np.tan(incl) * np.sin(PhiL)  *np.sin(pol_ang) )
