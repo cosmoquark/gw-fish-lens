@@ -102,8 +102,13 @@ def log_likelihood(theta_l, theta_l_true, lens_image):
         kwargs_ps         = kwargs_ps_true
     )
 
-    d_true = lens_image.model(**model_params)
+    d_true = lens_image.model(**true_params)
     d_model = lens_image.model(**model_params)
+    # estimate the error per pixel
+    model_var = noise.C_D_model(d_model)
+    model_std = jnp.sqrt(model_var)
+
+
 
 
 def log_posterior(theta_l, theta_l_true, lens_image):
