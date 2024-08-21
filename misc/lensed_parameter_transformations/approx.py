@@ -1,4 +1,4 @@
-# Lensed waveform parameters
+# Approximated at first order
 
 import numpy as np
 
